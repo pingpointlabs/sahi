@@ -137,7 +137,7 @@ def process_coco_annotations(
     for coco_annotation in coco_annotation_list:
         if annotation_inside_slice(coco_annotation.json, slice_bbox):
             sliced_coco_annotation = coco_annotation.get_sliced_coco_annotation(slice_bbox)
-            if sliced_coco_annotation.area / coco_annotation.area >= min_area_ratio:
+            if coco_annotation.area > 0 and sliced_coco_annotation.area / coco_annotation.area >= min_area_ratio:
                 sliced_coco_annotation_list.append(sliced_coco_annotation)
     return sliced_coco_annotation_list
 
